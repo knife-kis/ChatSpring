@@ -6,5 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class serverMainRunner {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
+        ServerMain serverMain = context.getBean("serverMain", ServerMain.class);
+        serverMain.start(8189);
     }
 }

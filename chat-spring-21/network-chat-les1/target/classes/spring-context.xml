@@ -4,10 +4,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="serverMain" class="com.tarnovskiy.server.ServerMain">
+        <constructor-arg ref="dataSource"/>
+    </bean>
+
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
         <property name="username" value="root"/>
         <property name="password" value="123123"/>
-        <property name="url" value="jdbc:sqlite:mydb.db"/>
+        <property name="url" value="jdbc:sqlite:C:\Users\Maks-Oks\Desktop\geekbrains\SPRING\hw01\chat-spring-21\network-chat-les1\mydb.db"/>
     </bean>
 </beans>
