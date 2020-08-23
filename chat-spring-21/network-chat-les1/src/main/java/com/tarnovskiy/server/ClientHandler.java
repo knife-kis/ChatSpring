@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClientHandler {
-    private final String PATH = "C:\\Users\\Maks-Oks\\Desktop\\geekbrains\\Lesson02\\logChat.txt";
-    private final String CENZYRA = "C:\\Users\\Maks-Oks\\Desktop\\geekbrains\\Lesson02\\cenzyra.txt";
+    private final String PATH = "C:\\Users\\Maks-Oks\\Desktop\\geekbrains\\SPRING\\hw01\\chat-spring-21\\network-chat-les1\\logChat.txt";
+    private final String CENZYRA = "C:\\Users\\Maks-Oks\\Desktop\\geekbrains\\SPRING\\hw01\\chat-spring-21\\network-chat-les1\\cenzyra.txt";
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;

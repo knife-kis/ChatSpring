@@ -35,3 +35,8 @@ nick1: B>@B
 nick1:  B>@B B>@B B>@B
 nick1: dawdawd
 nick1: qwer gsg *** sf
+nick1: 123123
+nick1: fuk
+nick1: 123123
+nick1: sefs
+: 123

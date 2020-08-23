@@ -7,7 +7,7 @@ import java.sql.*;
  * @author Tarnovskiy Maksim
  */
 public class AuthService {
-    private static final String CON_STR = "jdbc:sqlite:mydb.db";
+    private static final String CON_STR = "jdbc:sqlite:C:\\Users\\Maks-Oks\\Desktop\\geekbrains\\SPRING\\hw01\\chat-spring-21\\network-chat-les1\\mydb.db";
     private static Connection connection;
     private static Statement stmt;
     private static int id;
