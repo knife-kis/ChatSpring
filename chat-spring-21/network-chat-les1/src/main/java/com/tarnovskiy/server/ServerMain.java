@@ -3,7 +3,9 @@ package com.tarnovskiy.server;
 import org.apache.log4j.Logger;
 
 import com.tarnovskiy.server.DB.AuthService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.io.*;
@@ -12,12 +14,14 @@ import java.net.Socket;
 import java.sql.SQLException;
 import java.util.Vector;
 
+@Component
 public class ServerMain {
     private Vector<ClientHandler> clients;
     private ServerSocket server = null;
     private Socket socket = null;
     private static final Logger log = Logger.getLogger(ServerMain.class);
 
+    @Autowired
     public ServerMain(DataSource dataSource) throws SQLException {
 
         AuthService.connect(dataSource);
