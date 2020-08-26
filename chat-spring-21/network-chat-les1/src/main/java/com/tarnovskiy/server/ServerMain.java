@@ -3,17 +3,49 @@ package com.tarnovskiy.server;
 import org.apache.log4j.Logger;
 
 import com.tarnovskiy.server.DB.AuthService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.Vector;
 
+@Component
 public class ServerMain {
-//    private DataSource dataSource;
     private Vector<ClientHandler> clients;
+    private ServerSocket server = null;
+    private Socket socket = null;
     private static final Logger log = Logger.getLogger(ServerMain.class);
+
+    @Autowired
+    public ServerMain(DataSource dataSource) throws SQLException {
+
+        AuthService.connect(dataSource);
+    }
+    public void start(int port){
+        try {
+            clients = new Vector<>();
+            server = new ServerSocket(port);
+            System.out.println("Сервер запущен!");
+            log.info("Сервер запущен!");
+
+            while (true) {
+                socket = server.accept();
+                System.out.println("Клиент подключился ");
+                new ClientHandler(this, socket);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            closeSocketAndServer(socket, server);
+            AuthService.disconnect();
+        }
+    }
 
     public ServerMain() {
         clients = new Vector<>();
@@ -21,7 +53,6 @@ public class ServerMain {
         Socket socket = null;
 
         try {
-
             AuthService.connect();
             server = new ServerSocket(8189);
             System.out.println("Сервер запущен!");

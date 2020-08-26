@@ -12,9 +12,16 @@ public class AuthService {
     private static Statement stmt;
     private static int id;
 
+    public static void connect(DataSource dataSource) {
+        try {
+            dataSource.getConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void connect() {
         try {
-//            dataSource.getConnection();
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(CON_STR);
             stmt = connection.createStatement();
