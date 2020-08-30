@@ -81,13 +81,13 @@ public class UserRepository {
         }
     }
 
-//    public User update(User user) throws SQLException {
-//        try (PreparedStatement stmt = conn.prepareStatement(
-//                "update users SET login = (?) where id = (?);")) {
-//            stmt.setString(1, user.getLogin());
-//            stmt.setString(2, String.valueOf(user.getId()));
-//            stmt.execute();
-//        }
-//        return user;
-//    }
+    public User update(User user) throws SQLException {
+        try (PreparedStatement stmt = conn.prepareStatement(
+                "update users SET login = (?) where id = (?);")) {
+            stmt.setString(1, user.getLogin());
+            stmt.setString(2, String.valueOf(user.getId()));
+            stmt.execute();
+        }
+        return user;
+    }
 }
