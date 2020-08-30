@@ -35,10 +35,17 @@ public class UserController {
         return "user";
     }
 
+    @PostMapping("/add")
+    public String addUser(User user,Model model) throws SQLException{
+        List<User> allUsers = userRepository.getAllUsers();
+        allUsers.add(user);
+        userRepository.insert(user);
+        return "redirect:/user";
+    }
+
     @PostMapping("/update")
-    public String updateUser(User user, Model model) throws SQLException {
-        User u = userRepository.update(user);
-        model.addAttribute("users", u);
+    public String updateUser(User user) throws SQLException {
+        userRepository.update(user);
         return "redirect:/user";
     }
 }

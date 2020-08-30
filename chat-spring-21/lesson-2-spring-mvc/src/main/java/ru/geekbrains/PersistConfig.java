@@ -27,7 +27,7 @@ public class PersistConfig {
     private String password;
 
     @Bean
-    public UserRepository userRepository(DataSource dataSource) throws SQLException {
+    public UserRepository productRepository(DataSource dataSource) throws SQLException {
         return new UserRepository(dataSource);
     }
 

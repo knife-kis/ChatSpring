@@ -23,13 +23,14 @@ public class UserRepository {
         createTableIfNotExists(conn);
     }
 
-    public void insert(User user) throws SQLException {
+    public User insert(User user) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement(
                 "insert into users(login, password) values (?, ?);")) {
             stmt.setString(1, user.getLogin());
             stmt.setString(2, user.getPassword());
             stmt.execute();
         }
+        return user;
     }
 
     public User findByLogin(String login) throws SQLException {
@@ -81,13 +82,13 @@ public class UserRepository {
         }
     }
 
-    public User update(User user) throws SQLException {
+    public void update(User user) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement(
                 "update users SET login = (?) where id = (?);")) {
             stmt.setString(1, user.getLogin());
             stmt.setString(2, String.valueOf(user.getId()));
             stmt.execute();
         }
-        return user;
+//        return user;
     }
 }
